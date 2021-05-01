@@ -163,3 +163,5 @@ Route::delete('admin/product/delete', [ProductController::class, 'destroy'])
 //Profile Edit
 //Route::post('admin/change_password', [ProfileController::class, 'change_password_update'])->name('update.password');
 //Route::resource('profile', [ProfileController::class]);
+
+//User Side

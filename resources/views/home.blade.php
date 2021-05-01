@@ -3,9 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+  <div class="container">
+<div class="row justify-content-center">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -20,20 +20,16 @@
                         </div> -->
                     @endif
 
-
                 </div>
             </div>
         </div>
     </div>
-</div>
+  </div>
+
+  <a href="{{ url('admin/kelola_barang/') }}" class="btn btn-xs btn-info pull-right">Edit</a>
+    
+    
 @endsection
-@section('footer')
-<div class="float-right d-none d-sm-block">
-    <b>Version</b> 1.0.0
-</div>
-<strong>CopyRight &copy; {{date('Y')}}
-    <a href="https://github.com/Skmnkn" target="_blank">Rizky Nurfauzi</a>.</strong> All Right reserved
-@stop
 
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">

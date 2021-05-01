@@ -128,7 +128,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-white elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-dark navbar-grey',
+    'classes_topnav' => 'navbar-dark navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -236,7 +236,7 @@ return [
             'can' => 'isAdmin',
         ],
         [
-            'text'        => 'User',
+            'text'        => 'Account',
             'url'         => 'admin/user',
             'icon'        => 'far fa-fw fa-user',
             'can' => 'isAdmin',
@@ -244,13 +244,19 @@ return [
         [
             'text'        => 'Item Management',
             'url'         => 'admin/kelola_barang',
-            'icon'        => 'fas fa-fw fa-box',
+            'icon'        => 'fas fa-fw fa-clipboard',
             'can' => 'isAdmin',
+        ],
+        [
+            'text'        => 'Item View',
+            'url'         => 'user/view_barang',
+            'icon'        => 'fas fa-fw fa-desktop',
+            'can' => 'isUser',
         ],
         [
             'text'        => 'Item Category',
             'url'         => 'admin/kategori',
-            'icon'        => 'fas fa-fw fa-folder-open',
+            'icon'        => 'fas fa-fw fa-inbox',
             'can' => 'isAdmin',
         ],
         [
@@ -261,7 +267,7 @@ return [
         ],
         [
             'text'    => 'Report',
-            'icon'    => 'fas fa-file-archive',
+            'icon'    => 'fas fa-stream',
             'can' => 'isAdmin',
             'submenu' => [
                 [
@@ -283,17 +289,17 @@ return [
         //     'icon'        => 'fas fa-fw fa-book',
         //     'can'         => 'isAdmin',
         // ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => '/profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'profile',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        // ['header' => 'account_settings'],
+        // [
+        //     'text' => 'profile',
+        //     'url'  => '/profile',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
+        // [
+        //     'text' => 'change_password',
+        //     'url'  => 'profile',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',

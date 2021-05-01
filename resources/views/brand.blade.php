@@ -11,10 +11,6 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    {{ __('Brands Setting') }}
-
-                </div>
                 <div class="card-body">
                     <button class="btn btn-primary float-left mr-3" data-toggle="modal" data-target="#modalTambah"><i class="fa fa-plus"></i> Add Data</button>
 
@@ -57,7 +53,7 @@
 
 <!-- Modal Tambah Data -->
 <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data Brands</h5>
@@ -92,7 +88,7 @@
 
 <!-- Modal Edit Data -->
 <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Data Brands</h5>
@@ -132,7 +128,7 @@
 
 <!-- Modal Delete Data -->
 <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Hapus Data Brands</h5>
@@ -141,7 +137,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah anda yakin ingin menghapus Data Brand <strong class="" id="delete-nama"></strong>?
+                Apakah anda yakin ingin menghapus Data Brand <strong class="" id="delete-name"></strong>?
                 <form method="post" action="{{ route('admin.brand.delete') }}" enctype="multipart/form-data">
                     @csrf
                     @method('DELETE')
@@ -171,9 +167,9 @@
         });
         $(document).on('click', '#btn-delete-brands', function() {
             let id = $(this).data('id');
-            let nama = $(this).data('name');
+            let name = $(this).data('name');
             $('#delete-id').val(id);
-            $('#delete-nama').text(nama);
+            $('#delete-name').text(name);
             console.log("hallo");
         });
 

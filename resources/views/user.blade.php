@@ -10,12 +10,8 @@
     <div class="row justify-content-center">
         <div class="col-md-14">
             <div class="card">
-                <div class="card-header">
-                    {{ __('User Setting') }}
-
-                </div>
                 <div class="card-body">
-                    <button class="btn btn-primary float-left mr-3" data-toggle="modal" data-target="#modalTambahUser"><i class="fa fa-plus"></i> Tambah User</button>
+                    <button class="btn btn-primary float-left mr-3" data-toggle="modal" data-target="#modalTambahUser"><i class="fa fa-plus"></i> Add User</button>
                     <div class="btn-group mb-5" role="group" aria-label="Basis Example">
                     </div>
                     <table id="table-data" class="table table-borderer display nowrap" style="width:100%">
@@ -64,10 +60,10 @@
 
 <!-- Modal Tambah User  -->
 <div class="modal fade" id="modalTambahUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Data User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -75,18 +71,16 @@
             <div class="modal-body">
                 <form method="post" action="{{ route('admin.user.submit') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="container-fluid">
                         <div class="row">
-                            <div class="form-group .col-md-6 mr-5">
+                            <div class="form-group col-md-6 mr-auto">
                                 <label for="name">Nama</label>
                                 <input type="text" placeholder="Masukan Nama" class="form-control" name="name" id="name" required />
                             </div>
-                            <div class="form-group .col-md-6 .ml-auto">
+                            <div class="form-group col-md-6 ml-auto">
                                 <label for="username">Username</label>
                                 <input type="text" placeholder="Masukan username" class="form-control" name="username" id="username" required />
                             </div>
                         </div>
-                    </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="text" class="form-control" placeholder="Masukan Email" name="email" id="email" required />
@@ -95,37 +89,27 @@
                         <label for="password">Password</label>
                         <input min="1" type="password" class="form-control" placeholder="Masukan password" name="password" id="password" required />
                     </div>
-                    <div class="form-group">
-                        <label for="roles_id">Role</label>
-                        <div class="input-group">
-                            <select class="custom-select" name="roles_id" placeholder="Masukan role anda" id="roles_id" aria-label="Example select with button addon">
-                                <option selected>Pilih...</option>
-                                <option value="1">Admin</option>
-                                <option value="2">User</option>
-                            </select>
-
-                        </div>
-                        <!-- <div class="input-group">
-                            <input type="text" name="roles_id" id="roles_id" class="form-control" aria-label="Text input with dropdown button">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pilih</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#roles_id" aria-valuetext="Admin">Admin</a>
-                                    <a class="dropdown-item" href="#roles_id" aria-valuetext="User">User</a>
-
-                                </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 mr-auto">
+                            <label for="roles_id">Roles</label>
+                            <div class="input-group">
+                                <select class="custom-select" name="roles_id" placeholder="Masukan role anda" id="roles_id" aria-label="Example select with button addon">
+                                    <option selected>Pilih...</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">User</option>
+                                </select>
                             </div>
-                        </div> -->
-                    </div>
-                    <div class="form-group">
-                        <label for="photo">Foto</label>
-                        <input type="file" class="form-control" placeholder="Masukan foto anda" name="photo" id="photo" />
+                        </div>
+                        <div class="form-group col-md-6 ml-auto">
+                            <label for="photo">Foto</label>
+                            <input type="file" class="form-control" placeholder="Masukan foto anda" name="photo" id="photo" />
+                        </div>
                     </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
         </div>
@@ -135,7 +119,7 @@
 
 <!-- Modal Edit User -->
 <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Users</h5>
@@ -153,10 +137,7 @@
                                 <label for="name">Nama</label>
                                 <input type="text" class="form-control" name="name" id="edit-name" required />
                             </div>
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" name="username" id="edit-username" required />
-                            </div>
+                            
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control" name="email" id="edit-email" required />
@@ -188,6 +169,10 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" name="username" id="edit-username" required />
+                            </div>
                             <div class="form-group" id="image-area"></div>
                             <div class="form-group">
                                 <label for="edit-photo">photo</label>
@@ -210,16 +195,16 @@
 
 <!-- Modal Delete User -->
 <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered  ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Hapus Data User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Data User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Apakah anda yakin akan menghapus data <strong class="font-italic" id="delete-name"></strong>?
+                Are you sure to delete <strong class="font-italic" id="delete-name"></strong>?
                 <form method="post" action="{{ route('admin.user.delete') }}" enctype="multipart/form-data">
                     @csrf
                     @method('DELETE')
@@ -307,7 +292,6 @@
             $('#delete-id').val(id);
             $('#delete-old-photo').val(photo);
             $('#delete-name').text(name);
-            console.log("hallo");
         });
 
     });
