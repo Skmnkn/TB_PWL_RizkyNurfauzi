@@ -41,8 +41,8 @@
 
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" id="btn-edit-brands" class="btn" data-toggle="modal" data-target="#modalEdit" data-id="{{ $key->id }}"><i class="fa fa-edit"></i></button>
-                                        <button type="button" id="btn-delete-brands" class="btn" data-toggle="modal" data-target="#modalDelete" data-id="{{ $key->id }}" data-name="{{ $key->name }}"><i class="fa fa-trash"></i></button>
+                                        <button type="button" id="btn-edit-brands" class="btn btn-success" data-toggle="modal" data-target="#modalEdit" data-id="{{ $key->id }}">Edit</button>
+                                        <button type="button" id="btn-delete-brands" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" data-id="{{ $key->id }}" data-name="{{ $key->name }}">Delete</button>
                                     </div>
                                 </td>
                             </tr>

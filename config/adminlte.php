@@ -242,51 +242,51 @@ return [
             'can' => 'isAdmin',
         ],
         [
-            'text'        => 'Pengelolaan Barang',
+            'text'        => 'Item Management',
             'url'         => 'admin/kelola_barang',
             'icon'        => 'fas fa-fw fa-box',
             'can' => 'isAdmin',
         ],
         [
-            'text'        => 'Kategori Barang',
+            'text'        => 'Item Category',
             'url'         => 'admin/kategori',
             'icon'        => 'fas fa-fw fa-folder-open',
             'can' => 'isAdmin',
         ],
         [
-            'text'        => 'Brand',
+            'text'        => 'Item Brand',
             'url'         => 'admin/brand',
-            'icon'        => 'fab fa-fw fa-apple',
+            'icon'        => 'fab fa-fw fa-xing',
             'can' => 'isAdmin',
         ],
         [
-            'text'    => 'Laporan',
+            'text'    => 'Report',
             'icon'    => 'fas fa-file-archive',
             'can' => 'isAdmin',
             'submenu' => [
                 [
-                    'text' => 'Laporan Barang Masuk',
+                    'text' => 'Incoming Item Report',
                     'url'  => 'admin/laporan/masuk',
                     'icon' => 'fas fa-sign-in-alt',
                 ],
                 [
-                    'text'    => 'Laporan Barang Keluar',
+                    'text'    => 'Outgoing Item Report',
                     'url'     => 'admin/laporan/keluar',
                     'icon' => 'fas fa-sign-out-alt',
                 ],
             ],
         ],
 
-        [
-            'text'        => 'Book',
-            'url'         => 'admin/books',
-            'icon'        => 'fas fa-fw fa-book',
-            'can'         => 'isAdmin',
-        ],
+        // [
+        //     'text'        => 'Book',
+        //     'url'         => 'admin/books',
+        //     'icon'        => 'fas fa-fw fa-book',
+        //     'can'         => 'isAdmin',
+        // ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'profile',
+            'url'  => '/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

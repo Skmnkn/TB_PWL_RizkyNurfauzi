@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'BrandS')
+@section('title', 'User Management')
 
 @section('content_header')
 <h1 class="text-center text-bold">USER</h1>
@@ -8,7 +8,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-14">
             <div class="card">
                 <div class="card-header">
                     {{ __('User Setting') }}
@@ -48,14 +48,13 @@
                                 <td>{{$pengguna->roles_id}}</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" id="btn-edit-user" class="btn" data-toggle="modal" data-target="#modalEdit" data-id="{{ $pengguna->id }}" data-photo="{{$pengguna->photo}}" data-name="{{$pengguna->name}}" data-username="{{$pengguna->username}}" data-email="{{$pengguna->email}}" data-password="{{$pengguna->password}}" data-roles_id="{{$pengguna->roles_id}}"><i class="fa fa-edit"></i></button>
-                                        <button type="button" id="btn-delete-user" class="btn" data-toggle="modal" data-target="#modalDelete" data-id="{{ $pengguna->id }}" data-photo="{{ $pengguna->photo }}" data-name="{{$pengguna->name}}"><i class="fa fa-trash"></i></button>
+                                        <button type="button" id="btn-edit-user" class="btn btn-success" data-toggle="modal" data-target="#modalEdit" data-id="{{ $pengguna->id }}" data-photo="{{$pengguna->photo}}" data-name="{{$pengguna->name}}" data-username="{{$pengguna->username}}" data-email="{{$pengguna->email}}" data-password="{{$pengguna->password}}" data-roles_id="{{$pengguna->roles_id}}">Edit</button>
+                                        <button type="button" id="btn-delete-user" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" data-id="{{ $pengguna->id }}" data-photo="{{ $pengguna->photo }}" data-name="{{$pengguna->name}}">Delete</button>
                                     </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
-
                     </table>
                 </div>
             </div>

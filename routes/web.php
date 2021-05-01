@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoriesController;
 use GuzzleHttp\Middleware;
@@ -76,23 +76,23 @@ Route::post('admin/books/import', [BookController::class, 'import'])
 
 
 //Route User
-Route::get('admin/user', [ProfileController::class, 'index'])
+Route::get('admin/user', [UserController::class, 'index'])
     ->name('admin.user')
     ->Middleware('is_admin');
 
 //route tambah
-Route::post('admin/user', [ProfileController::class, 'add_user'])
+Route::post('admin/user', [UserController::class, 'add_user'])
     ->name('admin.user.submit')
     ->middleware('is_admin');
 
 //route edit
-Route::patch('admin/user/update', [ProfileController::class, 'update_user'])
+Route::patch('admin/user/update', [UserController::class, 'update_user'])
     ->name('admin.user.update')
     ->middleware('is_admin');
-Route::get('admin/ajaxadmin/dataUser/{id}', [ProfileController::class, 'getDataUser']);
+Route::get('admin/ajaxadmin/dataUser/{id}', [UserController::class, 'getDataUser']);
 
 //route delete
-Route::delete('admin/user/delete', [ProfileController::class, 'destroy'])
+Route::delete('admin/user/delete', [UserController::class, 'destroy'])
     ->name('admin.user.delete')
     ->middleware('is_admin');
 
@@ -149,3 +149,17 @@ Route::get('admin/kelola_barang', [ProductController::class, 'index'])
 Route::post('admin/kelola_barang', [ProductController::class, 'add_product'])
     ->name('admin.product.submit')
     ->middleware('is_admin');
+
+Route::patch('admin/product/update', [ProductController::class, 'update_product'])
+    ->name('admin.product.update')
+    ->middleware('is_admin');
+
+Route::get('admin/ajaxadmin/product/{id}', [ProductController::class, 'getDataProduct']);
+
+Route::delete('admin/product/delete', [ProductController::class, 'destroy'])
+    ->name('admin.product.delete')
+    ->middleware('is_admin');
+
+//Profile Edit
+//Route::post('admin/change_password', [ProfileController::class, 'change_password_update'])->name('update.password');
+//Route::resource('profile', [ProfileController::class]);

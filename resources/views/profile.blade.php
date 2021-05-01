@@ -1,38 +1,55 @@
 @extends('adminlte::page')
 
-@section('title', 'Pengaturan Profile')
+@section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Pengaturan Profile</h1>
+<h1>Profile Settings</h1>
 @stop
 
 @section('content')
-<form>
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Email address</label>
-      <input type="email" class="form-control" id="email" placeholder="email">
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">{{ __('Profile Settings') }}</div>
+                <div class="card-body">
+                @foreach($users as $i)
+                    <form method="POST" action="{{route('profile.update',$i->id)}}">
+                        @csrf        
+                        @method('PUT')
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                                placeholder="Name" name="name" value="{{$i->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="username"
+                                name="username" value="{{$i->username}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="email" name="email"
+                            value="{{$i->email}}">
+                        </div>
+                        @endforeach
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="password">
-    </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
-</form>
+</div>
 @stop
-
-@section('footer')
-    <div class="float-right d-none d-sm-block">
-        <b>Version</b> 1.0.0
-    </div>
-    <strong>CopyRight &copy; {{date('Y')}}
-    <a href="http://ft.unsur.ac.id/" target="_blank">Fakultas Teknik,
-    Universitas Suryakancana</a>.</strong> All Right reserved
 @stop
 
 @section('css')
-        <link rel="stylesheet" href="/css/admin_custom.css">
+<link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')
-        <script>console.log ('Hi!')</script>
+<script>
+console.log('Hi!');
+</script>
 @stop

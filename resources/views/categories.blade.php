@@ -27,7 +27,6 @@
                                 <th>NAMA KATEGORI</th>
                                 <th>KETERANGAN</th>
                                 <th>ACTION</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -39,8 +38,8 @@
                                 <td>{{$key->description}}</td>
                                 <td>
                                     <div class="btn-group" roles="group" aria-label="Basic Example">
-                                        <button type="button" id="btn-edit-categories" class="btn" data-toggle="modal" data-target="#modalEdit" data-id="{{ $key->id }}" data-name="{{ $key->name }}" data-description="{{ $key->description }}"><i class="fa fa-edit"></i></button>
-                                        <button type="button" id="btn-delete-categories" class="btn" data-toggle="modal" data-target="#modalDeleteData" data-id="{{ $key->id }}" data-name="{{$key->name}}"><i class="fa fa-trash"></i></button>
+                                        <button type="button" id="btn-edit-categories" class="btn btn-success" data-toggle="modal" data-target="#modalEdit" data-id="{{ $key->id }}" data-name="{{ $key->name }}" data-description="{{ $key->description }}">Edit</button>
+                                        <button type="button" id="btn-delete-categories" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteData" data-id="{{ $key->id }}" data-name="{{$key->name}}">Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -73,7 +72,7 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Keterangan</label>
-                        <textarea class="form-control" aria-label="With textarea" placeholder="Masukan keterangan kategori" name="description" id="description" required></textarea>
+                        <textarea class="form-control" aria-label="With textarea" placeholder="Masukan keterangan kategori" name="description" id="description"></textarea>
                     </div>
             </div>
             <div class="modal-footer">

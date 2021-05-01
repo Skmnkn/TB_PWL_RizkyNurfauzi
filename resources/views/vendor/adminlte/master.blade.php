@@ -19,6 +19,9 @@
         @yield('title_postfix', config('adminlte.title_postfix', ''))
     </title>
 
+    {{-- Favicon --}}
+    <link rel="favicon" href="{{asset('public/vendor/adminlte/img/icon.svg')}}">
+
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
 

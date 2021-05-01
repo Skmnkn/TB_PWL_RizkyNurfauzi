@@ -2,108 +2,121 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Profiler\Profile;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
-    // public function index(){
-    //     return view('profile');
-    // }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $user = Auth::user();
-        $users = User::all();
-        return view('view_user', compact('user', 'users'));
+        $mail = Auth::user()->email;
+        $users = User::all()->where('email', $mail);
+        return view('profile', compact('users'));
     }
-    public function add_user(Request $req)
+    public function change_password()
     {
-        $users = new User;
+        $mail = Auth::user()->email;
+        $data = User::all()->where('email', $mail);
+        return view('change_password', compact('data'));
+    }
 
-        $users->name = $req->get('name');
-        $users->username = $req->get('username');
-        $users->email = $req->get('email');
-        $users->password = $req->get('password');
-        $users->roles_id = $req->get('roles_id');
-
-        if ($req->hasFile('photo')) {
-            $extension = $req->file('photo')->extension();
-
-            $filename = 'photo_user_' . time() . '.' . $extension;
-
-            $req->file('photo')->storeAs(
-                'public/photo_user',
-                $filename
+    public function change_password_update(Request $request, User $profile)
+    {
+        $validated = $request->validate([
+            'password' => 'required|confirmed|min:5',
+        ]);
+        if ($validated == TRUE) {
+            $data = User::find($request->id);
+            $data->password = bcrypt($request->password);
+            $data->save();
+            $notification = array(
+                'message' => 'Password Berhasil Diubah',
+                'alert-type' => 'success'
             );
-
-            $users->photo = $filename;
+            return redirect()->route('change.password')->with($notification);
+        } else {
+            return redirect()->route('change.password');
         }
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //O
 
-        $users->save();
-
-        $notification = array(
-            'message' => 'Tambah Data Berhasil',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('admin.user')->with($notification);
     }
 
-    public function update_user(Request $req)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $users = User::find($req->get('id'));
-
-        $users->name = $req->get('name');
-        $users->username = $req->get('username');
-        $users->email = $req->get('email');
-        $users->password = $req->get('password');
-        $users->roles_id = $req->get('roles_id');
-
-        if ($req->hasFile('photo')) {
-            $extension = $req->file('photo')->extension();
-
-            $filename = 'photo_user_' . time() . '.' . $extension;
-
-            $req->file('photo')->storeAs(
-                'public/photo_user',
-                $filename
-            );
-
-            Storage::delete('public/photo_user/' . $req->get('old_photo'));
-
-            $users->photo = $filename;
-        }
-
-        $users->save();
-
-        $notification = array(
-            'message' => 'Edit Data Berhasil',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('admin.user')->with($notification);
+        //
     }
-    public function getDataUser($id)
-    {
-        $users = User::find($id);
 
-        return response()->json($users);
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
-    public function destroy(Request $req)
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        $users = User::find($req->id);
-        $users->name = $req->get('name');
-        Storage::delete('public/photo_user/' . $req->get('old_photo'));
-        $users->delete();
+        //
+    }
 
-        $notification = array(
-            'message' => 'Hapus Data user berhasil',
-            'alert-type' => 'success'
-        );
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $profile)
+    {
+        //
+        $newData = User::find($profile->id);
+        $newData->name = $request->name;
+        $newData->email = $request->email;
+        $newData->username = $request->username;
 
-        return redirect()->route('admin.user')->with($notification);
+        $newData->save();
+
+        return redirect()->route('profile.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
