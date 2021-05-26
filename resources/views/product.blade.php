@@ -37,10 +37,10 @@
               <tr>
                 <td>{{$no++}}</td>
                 <td>{{$key->name}}</td>
-                <td>{{$key->categories_id}}</td>
+                <td>{{$key->view_kategori->name}}</td>
                 <td>{{$key->total}}</td>
                 <td>
-                  {{$key->brands_id}}
+                  {{$key->view_merek->name}}
                 </td>
                 <td>
                   @if($key->photo !== null)

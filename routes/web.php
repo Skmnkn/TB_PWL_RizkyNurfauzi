@@ -160,6 +160,12 @@ Route::delete('admin/product/delete', [ProductController::class, 'destroy'])
     ->name('admin.product.delete')
     ->middleware('is_admin');
 
+//Laporan Barang masuk Print
+Route::get('admin/laporan/masuk', [ProductController::class, 'laporanmsk']);
+
+Route::get('admin/laporan/masuk/print', [ProductController::class, 'print_report'])
+    ->name('admin.print.report')
+    ->middleware('is_admin');
 //Profile Edit
 //Route::post('admin/change_password', [ProfileController::class, 'change_password_update'])->name('update.password');
 //Route::resource('profile', [ProfileController::class]);
