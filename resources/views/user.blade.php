@@ -8,7 +8,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-14">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <button class="btn btn-primary float-left mr-3" data-toggle="modal" data-target="#modalTambahUser"><i class="fa fa-plus"></i> Add User</button>
@@ -143,7 +143,7 @@
                                 <input type="text" class="form-control" name="email" id="edit-email" required />
                             </div>
                             <div class="form-group">
-                                <label for="password">Password lama</label>
+                                <label for="password">Password</label>
                                 <input min="0" type="text" class="form-control" name="password" id="edit-password" required />
                             </div>
                             <div class="form-group">

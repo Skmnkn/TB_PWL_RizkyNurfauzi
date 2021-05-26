@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Categories;
 use App\Models\Brands;
-
+use PDF;
 
 
 class ProductController extends Controller
@@ -108,5 +108,20 @@ class ProductController extends Controller
         );
 
         return redirect()->route('admin.product')->with($notification);
+    }
+
+    public function laporanmsk()
+    {
+        $user = Auth::user();
+        $barang = Product::all();
+        return view('laporanmsk', compact('user', 'barang'));
+    }
+
+    public function print_report()
+    {
+        $report = Product::all();
+
+        $pdf = PDF::loadview('print_report', ['report' => $report]);
+        return $pdf->stream('income_report.pdf');
     }
 }

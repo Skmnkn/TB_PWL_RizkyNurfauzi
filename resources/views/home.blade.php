@@ -25,8 +25,6 @@
         </div>
     </div>
   </div>
-
-  <a href="{{ url('admin/kelola_barang/') }}" class="btn btn-xs btn-info pull-right">Edit</a>
     
     
 @endsection
